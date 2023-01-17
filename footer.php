@@ -265,50 +265,54 @@
 <script src="assets/vendor/sweetalert2/sweetalert2.all.min.js"></script>
 
 
-<!-- jika ada session sukses maka tampilkan sweet alert dengan pesan yang telah di set
-        di dalam session sukses  -->
-<?php if (@$_SESSION['sukses']) { ?>
-    <script>
-        Swal.fire({
-            icon: 'success',
-            title: 'Sukses',
-            text: 'data berhasil dihapus',
-            timer: 3000,
-            showConfirmButton: false
-        })
-    </script>
-    <!-- jangan lupa untuk menambahkan unset agar sweet alert tidak muncul lagi saat di refresh -->
-<?php unset($_SESSION['sukses']);
-} ?>
-
-<!-- di bawah ini adalah script untuk konfirmasi hapus data dengan sweet alert  -->
-<script>
-    $('.alert_hapus').on('click', function() {
-        var getLink = $(this).attr('href');
-        Swal.fire({
-            title: "Yakin hapus data?",
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#d33',
-            confirmButtonText: 'Ya',
-            cancelButtonColor: '#3085d6',
-            cancelButtonText: "Batal"
-
-        }).then(result => {
-            //jika klik ya maka arahkan ke proses.php
-            if (result.isConfirmed) {
-                window.location.href = getLink
-            }
-        })
-        return false;
-    });
-</script>
-
-<!-- tambah data kamar -->
+<!-- Sweet alert CRUD -->
 <script>
     $(document).ready(function() {
+
+        // delete kamar
+        $(document).on('click', '.deleteRoom', function() {
+            var id = $(this).attr('id');
+
+            Swal.fire({
+                title: 'Yakin hapus data?',
+                text: "Kamu akan menghapus data ini!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Ya, hapus!',
+                cancelButtonText: "Batal"
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $.ajax({
+                        url: 'hapus/kamarTest.php',
+                        type: 'POST',
+                        data: {
+                            id: id
+                        },
+                        success: function(data) {
+                            Swal.fire({
+                                title: 'Berhasil',
+                                icon: 'success',
+                                text: 'Data berhasil di hapus',
+                                showConfirmButton: false,
+                                timer: 2000
+                            }).then(function() {
+                                window.location.reload();
+                            })
+                        }
+                    })
+                }
+            })
+        })
+
+
+
+        // tambah kamar
+
         $('#newRoom').submit(function(e) {
             e.preventDefault();
+
             $.ajax({
                 url: 'tambah/kamartest.php',
                 type: 'POST',
@@ -327,6 +331,102 @@
                     })
                 }
             })
+        })
+
+
+
+        // Edit kamar
+        $(document).on('click', '.editRoom', function() {
+            var id = $(this).attr('id');
+
+
+            $('#display_room').html('');
+            $.ajax({
+                url: 'edit/modalRoom.php',
+                type: 'POST',
+                cache: false,
+                data: {
+                    id: id
+                },
+                success: function(data) {
+                    $('#display_room').html(data);
+                    $('#updateRoomModal').modal('show');
+                }
+            })
+        })
+
+
+        // $('#editRoom').submit(function(e) {
+        //     e.preventDefault();
+
+        //     $.ajax({
+        //         url: 'edit/kamarTest.php',
+        //         type: 'POST',
+        //         data: $(this).serialize(),
+        //         cache: false,
+        //         success: function(data) {
+        //             Swal.fire({
+        //                 position: 'center',
+        //                 icon: 'success',
+        //                 title: 'Berhasil...',
+        //                 text: 'Berhasil mengubah data!',
+        //                 showConfirmButton: false,
+        //                 timer: 2000
+        //             }).then(function() {
+        //                 window.location = 'data-kamar.php';
+        //             })
+        //         }
+        //     })
+        // })
+    })
+</script>
+
+<!-- Delete data kamar -->
+<script>
+    $(document).ready(function() {
+
+
+
+
+
+
+        $('#newRoom').submit(function(e) {
+            e.preventDefault();
+
+
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+
+                    $.ajax({
+                        url: 'tambah/kamartest.php',
+                        type: 'POST',
+                        data: $(this).serialize(),
+                        cache: false,
+                        success: function(data) {
+                            Swal.fire({
+                                position: 'center',
+                                icon: 'success',
+                                title: 'Berhasil...',
+                                text: 'Berhasil menambahkan kamar baru!',
+                                showConfirmButton: false,
+                                timer: 2000
+                            }).then(function() {
+                                window.location = 'data-kamar.php';
+                            })
+                        }
+                    })
+                }
+            })
+
+
         })
     })
 </script>
