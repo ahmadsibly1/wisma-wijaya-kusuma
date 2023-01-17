@@ -1,8 +1,8 @@
 <aside class="sidebar sidebar-default navs-rounded-all ">
     <div class="sidebar-header d-flex align-items-center justify-content-start">
         <a href="dashboard.php" class="navbar-brand">
-            <h4 class="logo-title">Wisma RSKD</h4>
-
+            <img src="assets/images/logo-rskd.png" alt="Logo RSKD" width="70px" class="me-auto">
+            <!-- <h5 class="logo-title">Wisma RSKD</h5> -->
         </a>
         <div class="sidebar-toggle" data-toggle="sidebar" data-active="true">
             <i class="icon">

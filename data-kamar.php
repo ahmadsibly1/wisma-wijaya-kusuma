@@ -49,7 +49,7 @@ include("sidebar.php");
                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">
-                                        <form action="tambah/kamar.php" method="post">
+                                        <form id="newRoom" method="post">
                                             <div class="mb-3 row">
                                                 <label for="no_kamar" class="col-sm-3 col-form-label">Nomor Kamar</label>
                                                 <div class="col-sm-9">
