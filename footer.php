@@ -285,7 +285,7 @@
             }).then((result) => {
                 if (result.isConfirmed) {
                     $.ajax({
-                        url: 'hapus/kamarTest.php',
+                        url: 'hapus/kamar.php',
                         type: 'POST',
                         data: {
                             id: id
@@ -314,7 +314,7 @@
             e.preventDefault();
 
             $.ajax({
-                url: 'tambah/kamartest.php',
+                url: 'tambah/kamar.php',
                 type: 'POST',
                 data: $(this).serialize(),
                 cache: false,
@@ -333,51 +333,6 @@
             })
         })
 
-
-
-        // Edit kamar
-        $(document).on('click', '.editRoom', function() {
-            var id = $(this).attr('id');
-
-
-            $('#display_room').html('');
-            $.ajax({
-                url: 'edit/modalRoom.php',
-                type: 'POST',
-                cache: false,
-                data: {
-                    id: id
-                },
-                success: function(data) {
-                    $('#display_room').html(data);
-                    $('#updateRoomModal').modal('show');
-                }
-            })
-        })
-
-
-        // $('#editRoom').submit(function(e) {
-        //     e.preventDefault();
-
-        //     $.ajax({
-        //         url: 'edit/kamarTest.php',
-        //         type: 'POST',
-        //         data: $(this).serialize(),
-        //         cache: false,
-        //         success: function(data) {
-        //             Swal.fire({
-        //                 position: 'center',
-        //                 icon: 'success',
-        //                 title: 'Berhasil...',
-        //                 text: 'Berhasil mengubah data!',
-        //                 showConfirmButton: false,
-        //                 timer: 2000
-        //             }).then(function() {
-        //                 window.location = 'data-kamar.php';
-        //             })
-        //         }
-        //     })
-        // })
     })
 </script>
 

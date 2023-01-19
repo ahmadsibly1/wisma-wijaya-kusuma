@@ -1,5 +1,6 @@
 <?php
 $title = 'data tamu';
+include('config/koneksi.php');
 include("header.php");
 include("sidebar.php");
 ?>
@@ -117,45 +118,45 @@ include("sidebar.php");
                                 <thead>
                                     <tr>
                                         <th>Nama</th>
-                                        <!-- <th>No Telepon</th>
-                                        <th>Alamat</th> -->
-                                        <!-- <th>No Kamar</th> -->
-                                        <th>Waktu Masuk</th>
-                                        <th>Jumlah Hari</th>
+                                        <th>Alamat</th>
+                                        <th>No Handphone</th>
                                         <th>Jumlah Uang</th>
                                         <th>Status</th>
                                         <th>Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>Abdul Malik</td>
-                                        <!-- <td>089757576476</td>
-                                        <td>Balikpapan</td> -->
-                                        <!-- <td>2</td> -->
-                                        <td>2011/04/25</td>
-                                        <td>1</td>
-                                        <td>Rp. 4049</td>
-                                        <td>Check In</td>
-                                        <td>
-                                            <a href="#" class=" text-center btn btn-primary btn-icon mt-lg-0 mt-md-0 mt-3" data-bs-toggle="modal" data-bs-target="#staticBackdrop-1">
-                                                <i class="fa fa-print" aria-hidden="true"></i>
-                                                <!-- <span>Edit</span> -->
-                                            </a>
-                                            <a href="#" class=" text-center btn btn-secondary btn-icon mt-lg-0 mt-md-0 mt-3" data-bs-toggle="modal" data-bs-target="#staticBackdrop-1">
-                                                <i class="fa fa-eye" aria-hidden="true"></i>
-                                                <!-- <span>Edit</span> -->
-                                            </a>
-                                            <a href="#" class=" text-center btn btn-success btn-icon mt-lg-0 mt-md-0 mt-3" data-bs-toggle="modal" data-bs-target="#staticBackdrop-1">
-                                                <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                                                <!-- <span>Edit</span> -->
-                                            </a>
-                                            <a href="#" class=" text-center btn btn-danger btn-icon mt-lg-0 mt-md-0 mt-3" data-bs-toggle="modal" data-bs-target="#staticBackdrop-1">
-                                                <i class="fa fa-trash-o" aria-hidden="true"></i>
-                                                <!-- <span>Hapus</span> -->
-                                            </a>
-                                        </td>
-                                    </tr>
+                                    <?php
+                                    $query = mysqli_query($koneksi, 'SELECT * FROM pelanggan');
+                                    while ($data = mysqli_fetch_array($query)) {
+                                    ?>
+
+                                        <tr>
+                                            <td><?= $data['nama']; ?></td>
+                                            <td><?= $data['alamat']; ?></td>
+                                            <td><?= $data['no_hp']; ?></td>
+                                            <td><?= $data['ktp']; ?></td>
+                                            <td><?= $data['status']; ?></td>
+                                            <td>
+                                                <a href="#" class=" text-center btn btn-primary btn-icon mt-lg-0 mt-md-0 mt-3" data-bs-toggle="modal" data-bs-target="#staticBackdrop-1">
+                                                    <i class="fa fa-print" aria-hidden="true"></i>
+                                                    <!-- <span>Edit</span> -->
+                                                </a>
+                                                <a href="#" class=" text-center btn btn-secondary btn-icon mt-lg-0 mt-md-0 mt-3" data-bs-toggle="modal" data-bs-target="#staticBackdrop-1">
+                                                    <i class="fa fa-eye" aria-hidden="true"></i>
+                                                    <!-- <span>Edit</span> -->
+                                                </a>
+                                                <a href="#" class=" text-center btn btn-success btn-icon mt-lg-0 mt-md-0 mt-3" data-bs-toggle="modal" data-bs-target="#staticBackdrop-1">
+                                                    <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                                    <!-- <span>Edit</span> -->
+                                                </a>
+                                                <a href="#" class=" text-center btn btn-danger btn-icon mt-lg-0 mt-md-0 mt-3" data-bs-toggle="modal" data-bs-target="#staticBackdrop-1">
+                                                    <i class="fa fa-trash-o" aria-hidden="true"></i>
+                                                    <!-- <span>Hapus</span> -->
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    <?php } ?>
                                 </tbody>
                             </table>
                         </div>
