@@ -81,6 +81,14 @@
                         <span>Data Transaksi</span>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link <?php if ($title == 'reservasi') {
+                                            echo 'active';
+                                        } ?>" aria-current="page" href="reservasi.php">
+                        <i class="bi bi-door-open-fill"></i>
+                        <span>Reservasi</span>
+                    </a>
+                </li>
                 <li>
                     <hr class="hr-horizontal">
                 </li>

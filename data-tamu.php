@@ -142,10 +142,54 @@ include("sidebar.php");
                                                     <i class="fa fa-print" aria-hidden="true"></i>
                                                     <!-- <span>Edit</span> -->
                                                 </a>
-                                                <a href="#" class=" text-center btn btn-secondary btn-icon mt-lg-0 mt-md-0 mt-3" data-bs-toggle="modal" data-bs-target="#staticBackdrop-1">
+                                                <a href="#" class=" text-center btn btn-secondary btn-icon mt-lg-0 mt-md-0 mt-3" data-bs-toggle="modal" data-bs-target="#detail<?= $data['id_pelanggan']; ?>">
                                                     <i class="fa fa-eye" aria-hidden="true"></i>
                                                     <!-- <span>Edit</span> -->
                                                 </a>
+                                                <!-- modal detail -->
+                                                <div class="modal fade" id="detail<?= $data['id_pelanggan']; ?>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                                    <div class="modal-dialog modal-lg">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title" id="staticBackdropLabel">Detail Data Tamu</h5>
+                                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <div class="mb-3 row">
+                                                                    <label for="nama" class="col-sm-3 col-form-label">Nama Lengkap</label>
+                                                                    <div class="col-sm-9">
+                                                                        <input type="disabled" class="form-control" value="<?= $data['nama']; ?>">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="mb-3 row">
+                                                                    <label for="alamat" class="col-sm-3 col-form-label">Alamat</label>
+                                                                    <div class="col-sm-9">
+                                                                        <input type="disabled" class="form-control" value="<?= $data['alamat']; ?>">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="mb-3 row">
+                                                                    <label for="alamat" class="col-sm-3 col-form-label">Nomor Telephone</label>
+                                                                    <div class="col-sm-9">
+                                                                        <input type="disabled" class="form-control" value="<?= $data['no_hp']; ?>">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="mb-3 row">
+                                                                    <label for="alamat" class="col-sm-3 col-form-label">Foto Ktp</label>
+                                                                    <div class="col-sm-9">
+                                                                        <input type="disabled" class="form-control" value="<?= $data['ktp']; ?>">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="text-start mt-2">
+
+                                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
                                                 <a href="#" class=" text-center btn btn-success btn-icon mt-lg-0 mt-md-0 mt-3" data-bs-toggle="modal" data-bs-target="#staticBackdrop-1">
                                                     <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                                                     <!-- <span>Edit</span> -->
