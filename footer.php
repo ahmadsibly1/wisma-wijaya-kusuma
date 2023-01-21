@@ -333,6 +333,32 @@
             })
         })
 
+
+        // tambah reservasi
+
+        $('#tambah_reservasi').submit(function(e) {
+            e.preventDefault();
+
+            $.ajax({
+                url: 'tambah/checkin.php',
+                type: 'POST',
+                data: $(this).serialize(),
+                cache: false,
+                success: function(data) {
+                    Swal.fire({
+                        position: 'center',
+                        icon: 'success',
+                        title: 'Berhasil...',
+                        text: 'Berhasil menambahkan kamar baru!',
+                        showConfirmButton: false,
+                        timer: 2000
+                    }).then(function() {
+                        window.location.reload();
+                    })
+                }
+            })
+        })
+
     })
 </script>
 

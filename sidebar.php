@@ -34,7 +34,7 @@
                 <li class="nav-item">
                     <a class="nav-link" data-bs-toggle="collapse" href="#horizontal-menu" role="button" aria-expanded="false" aria-controls="horizontal-menu">
                         <i class="bi bi-x-diamond-fill"></i>
-                        <span class="item-name">Menu Style</span>
+                        <span class="item-name">Check In / Out</span>
                         <i class="right-icon">
                             <svg xmlns="http://www.w3.org/2000/svg" width="18" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
@@ -43,16 +43,19 @@
                     </a>
                     <ul class="sub-nav collapse" id="horizontal-menu" data-bs-parent="#sidebar-menu">
                         <li class="nav-item">
-                            <a class="nav-link " href="dashboard/index-horizontal.html">
-                                <i class="icon">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="10" viewBox="0 0 24 24" fill="currentColor">
-                                        <g>
-                                            <circle cx="12" cy="12" r="8" fill="currentColor"></circle>
-                                        </g>
-                                    </svg>
-                                </i>
-                                <i class="sidenav-mini-icon"> H </i>
-                                <span class="item-name"> Horizontal </span>
+                            <a class="nav-link <?php if ($title == 'checkin') {
+                                                    echo 'active';
+                                                } ?>" aria-current="page" href="checkin.php">
+                                <i class="bi bi-door-open-fill"></i>
+                                <span>Checkin</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link <?php if ($title == 'reservasi') {
+                                                    echo 'active';
+                                                } ?>" aria-current="page" href="reservasi.php">
+                                <i class="bi bi-door-open-fill"></i>
+                                <span>Reservasi</span>
                             </a>
                         </li>
                     </ul>

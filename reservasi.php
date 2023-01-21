@@ -76,16 +76,22 @@ include("sidebar.php");
                                                 <input type="file" name="ktp" class="form-control" id="ktp" placeholder="*" required>
                                             </div>
                                         </div>
+
                                         <div class="mb-3 row">
                                             <label for="tipe" class="col-sm-3 col-form-label">Tipe Kamar</label>
                                             <div class="col-sm-9">
                                                 <select class="form-select" name="tipe" aria-label="Default select example" required>
                                                     <option selected>Pilih tipe kamar</option>
-                                                    <option value="regular">Regular</option>
-                                                    <option value="vip">VIP</option>
+                                                    <?php
+                                                    $query = mysqli_query($koneksi, "SELECT DISTINCT type FROM kamar");
+                                                    while ($type = mysqli_fetch_array($query)) {
+                                                    ?>
+                                                        <option value="type"><?= $type['type']; ?></option>
+                                                    <?php } ?>
                                                 </select>
                                             </div>
                                         </div>
+
                                         <div class="mb-3 row">
                                             <label for="tipe" class="col-sm-3 col-form-label">Nomor Kamar</label>
                                             <div class="col-sm-9">
@@ -143,24 +149,31 @@ include("sidebar.php");
                             <table id="datatable" class="table table-hover" data-toggle="data-table">
                                 <thead>
                                     <tr>
+                                        <th>Nama</th>
                                         <th>No kamar</th>
-                                        <th>Tipe</th>
-                                        <th>Harga</th>
-                                        <th>status</th>
+                                        <th>TGL Check In</th>
+                                        <th>TGL Check In</th>
+                                        <th>JML Hari</th>
+                                        <th>Status</th>
                                         <th>Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <?php
-                                    $no = 1;
-                                    $query = mysqli_query($koneksi, 'SELECT * FROM kamar');
+                                    $query = mysqli_query($koneksi, 'SELECT * FROM reservasi 
+                                                        INNER JOIN pelanggan
+                                                        ON reservasi.id_pelanggan = pelanggan.id_pelanggan
+                                                        INNER JOIN kamar
+                                                        ON reservasi.id_kamar = kamar.id_kamar');
                                     while ($data = mysqli_fetch_array($query)) {
-                                        $no++
+
                                     ?>
                                         <tr>
+                                            <td><?= $data['nama']; ?></td>
                                             <td><?= $data['no_kamar']; ?></td>
-                                            <td><?= $data['type']; ?></td>
-                                            <td>Rp. <?= $data['harga']; ?></td>
+                                            <td><?= $data['tgl_checkin']; ?></td>
+                                            <td><?= $data['tgl_checkout']; ?></td>
+                                            <td>2</td>
                                             <td>
                                                 <?php if ($data['status'] == 'Kosong') {
                                                     echo "<span class='badge bg-info p-2'>Kosong</span>";
@@ -231,7 +244,7 @@ include("sidebar.php");
 
                                             </td>
                                         </tr>
-                                        <div class="display_room"></div>
+
                                     <?php } ?>
                                 </tbody>
                             </table>

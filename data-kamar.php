@@ -121,9 +121,7 @@ include("sidebar.php");
                                                     <!-- <span>Edit</span> -->
                                                 </a>
                                                 <!-- 
-                                                <button type="button" class="text-center btn btn-warning btn-icon mt-lg-0 mt-md-0 mt-3 editRoom" id="<?= $data['id_kamar']; ?>" data-bs-target="#updateRoomModal<?= $data['id_kamar']; ?>">
-                                                    <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                                                </button> -->
+
                                                 <!-- Modal edit -->
                                                 <div class="modal fade" id="staticBackdrop-2<?= $data['id_kamar']; ?>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                                                     <div class="modal-dialog modal-lg">
