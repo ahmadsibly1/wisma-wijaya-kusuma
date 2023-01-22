@@ -53,9 +53,9 @@ include("sidebar.php");
                                                 </li>
 
                                             </ul>
-                                            <button type="button" class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop-1<?= $data['no_kamar']; ?>">
+                                            <a href="checkinsee.php?id=<?= $data['id_kamar']; ?>" class="btn btn-sm btn-outline-primary">
                                                 Checkin
-                                            </button>
+                                            </a>
 
 
                                         </div>
