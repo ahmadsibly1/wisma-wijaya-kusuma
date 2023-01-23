@@ -49,63 +49,40 @@ include("sidebar.php");
                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">
-                                        <div class="mb-3 row">
-                                            <label for="nama" class="col-sm-3 col-form-label">Nama Lengkap</label>
-                                            <div class="col-sm-9">
-                                                <input type="text" name="nama" class="form-control" id="nama" placeholder="*" required>
-                                            </div>
-                                        </div>
-                                        <div class="mb-3 row">
-                                            <label for="alamat" class="col-sm-3 col-form-label">Alamat</label>
-                                            <div class="col-sm-9">
-                                                <input type="text" name="alamat" class="form-control" id="alamat" placeholder="*" required>
-                                            </div>
-                                        </div>
-                                        <div class="mb-3 row">
-                                            <label for="hp" class="col-sm-3 col-form-label">No Telepon</label>
-                                            <div class="col-sm-9">
-                                                <div class="input-group flex-nowrap">
-                                                    <span class="input-group-text" id="addon-wrapping">+62</span>
-                                                    <input type="text" name="hp" class="form-control" id="hp" placeholder="8953378978" aria-describedby="addon-wrapping" required>
+                                        <form id="tambah_tamu" method="post">
+                                            <div class="mb-3 row">
+                                                <label for="nama" class="col-sm-3 col-form-label">Nama Lengkap</label>
+                                                <div class="col-sm-9">
+                                                    <input type="text" name="nama" class="form-control" id="nama" placeholder="*" required>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="mb-3 row">
-                                            <label for="ktp" class="col-sm-3 col-form-label">KTP</label>
-                                            <div class="col-sm-9">
-                                                <input type="file" name="ktp" class="form-control" id="ktp" placeholder="*" required>
+                                            <div class="mb-3 row">
+                                                <label for="alamat" class="col-sm-3 col-form-label">Alamat</label>
+                                                <div class="col-sm-9">
+                                                    <input type="text" name="alamat" class="form-control" id="alamat" placeholder="*" required>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="mb-3 row">
-                                            <label for="tipe" class="col-sm-3 col-form-label">Tipe Kamar</label>
-                                            <div class="col-sm-9">
-                                                <select class="form-select" name="tipe" aria-label="Default select example" required>
-                                                    <option selected>Pilih tipe kamar</option>
-                                                    <option value="regular">Regular</option>
-                                                    <option value="vip">VIP</option>
-                                                </select>
+                                            <div class="mb-3 row">
+                                                <label for="hp" class="col-sm-3 col-form-label">No Telepon</label>
+                                                <div class="col-sm-9">
+                                                    <div class="input-group flex-nowrap">
+                                                        <span class="input-group-text" id="addon-wrapping">+62</span>
+                                                        <input type="text" name="hp" class="form-control" id="hp" placeholder="8953378978" aria-describedby="addon-wrapping" required>
+                                                    </div>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="mb-3 row">
-                                            <label for="jml_hari" class="col-sm-3 col-form-label">Jumlah Hari</label>
-                                            <div class="col-sm-9">
-                                                <select class="form-select" name="jml_hari" aria-label="Default select example" required>
-                                                    <option selected>Pilih jumlah hari menginap</option>
-                                                    <option value="1">1 Hari</option>
-                                                    <option value="2">2 Hari</option>
-                                                    <option value="3">3 Hari</option>
-                                                    <option value="4">4 Hari</option>
-                                                    <option value="5">5 Hari</option>
-                                                    <option value="6">6 Hari</option>
-                                                    <option value="seminggu">Paket 1 Minggu</option>
-                                                    <option value="sebulan">Paket 1 Bulan</option>
-                                                </select>
+                                            <div class="mb-3 row">
+                                                <label for="ktp" class="col-sm-3 col-form-label">KTP</label>
+                                                <div class="col-sm-9">
+                                                    <input type="number" name="ktp" class="form-control" id="ktp" placeholder="*" required>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="text-start mt-2">
-                                            <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Save</button>
-                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                        </div>
+
+                                            <div class="text-start mt-2">
+                                                <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Save</button>
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                            </div>
+                                        </form>
 
                                     </div>
                                 </div>
@@ -127,7 +104,7 @@ include("sidebar.php");
                                 </thead>
                                 <tbody>
                                     <?php
-                                    $query = mysqli_query($koneksi, 'SELECT * FROM pelanggan');
+                                    $query = mysqli_query($koneksi, 'SELECT * FROM pelanggan ORDER BY id_pelanggan DESC');
                                     while ($data = mysqli_fetch_array($query)) {
                                     ?>
 
